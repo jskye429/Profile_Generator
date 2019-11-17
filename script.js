@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const colors = ["blue", "red", "purple"];
-​
 inquirer.prompt([
     {
         type: "input",
@@ -15,4 +14,4 @@ inquirer.prompt([
     }
 ]).then(function(res){
     console.log(res)
-})
+});

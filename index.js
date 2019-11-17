@@ -1,9 +1,8 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-
 inquirer
-  .prompt({
+.prompt({
     message: "Enter your GitHub username",
     name: "username"
   })
@@ -12,14 +11,14 @@ inquirer
     axios.get(queryUrl)
     .then(function(res){
       let arr = res.data.map(repo => {
-        return repo.name
+      return repo.name
       });
       //console.log(arr)
       let str = arr.join("\n")
       console.log(str)
       fs.writeFile("log.txt", str, function(err){
         if (err) {
-          return console.log(err);
+        return console.log(err);
         }
         console.log(arr.length + "repos saved")
       })
