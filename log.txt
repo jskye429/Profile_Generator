@@ -1,7 +1,12 @@
+Bobs_Burgers
 DayPlanner
 demo-downoad
 Demo_Project_Oct
+EmployeeTrackerSQL
+Employee_Template_Engine
+Express_Note_Taker
 First_Homework
+Group_Project2
 jskye429.git.io
 Multiple_Choice
 PasswordGenerator
@@ -9,4 +14,6 @@ prework-about-me
 Profile_Generator
 ReciPal
 Responsive-Portfolio
+Restaurant_Reservation
+starwarsbaby
 WeatherApp
