@@ -1,3 +1,4 @@
+const lint = require("lint")
 const fs = require("fs");
 const axios = require("axios");
 const pdf = require('pdfkit');
@@ -29,8 +30,9 @@ inquirer
       });
       //console.log(arr)
       let str = arr.join("\n")
-      console.log(str)
-      
+      console.log(str);
+
+
       fs.writeFile("log.txt", "profile.pdf", str, function(err){
         if (err) {
         return console.log(err);
@@ -47,11 +49,11 @@ inquirer
 
     doc.fontSize(24)
     .fillColor("black")
-    .text("It's me" + res.data.name,{
+    .text("It's me" + res.data.name),{
       width: 500,
       align: "center"
 
-    });
+    };
     
 
 
@@ -59,7 +61,7 @@ doc.fontSize(10)
 .fillColor("black")
 .text("Find my face at" + JSON.stringify(results.data.avatar_url),{
     align: "center"
-});
+})
 
 doc.font("Times-Roman")
 .moveDown(5)
@@ -67,7 +69,7 @@ doc.font("Times-Roman")
 .text("Followers" + JSON.stringify(results.data.followers),{
     align: "left",
     continued:true
-});
+})
 
 doc.font("Times-Roman")
 .moveDown(3)
@@ -77,23 +79,15 @@ doc.font("Times-Roman")
     continued:true
 })
 .text("GitHub:" + JSON.stringify(results.data.data.html_url),{
-    align: "right"
+    align: "right",
 
 )};
 
 
 
 
-      )
+     
 
 print.end();                
-}                                         
-});         
-});
-});
-
-
-
-
-// doc.pipe(fs.createWriteStream('/path/to/file.pdf')); // write to PDF
-// doc.pipe(res);                                       // HTTP response
+}                                                 
+,},)});
