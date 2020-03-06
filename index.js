@@ -4,6 +4,7 @@ const axios = require("axios");
 const pdf = require('pdfkit');
 const inquirer = require("inquirer");
 const util = require("util");
+const blobStream = require("blob-stream");
 
 inquirer
 .prompt({
@@ -38,6 +39,7 @@ inquirer
         return console.log(err);
         }
         else  {
+  const stream = doc.pipe(blobStream());
 
   const print = new pdf;
       // pdf formating stuff
@@ -53,11 +55,8 @@ inquirer
       width: 500,
       align: "center"
 
-    };
-    
-
-
-doc.fontSize(10)
+      };
+    doc.fontSize(10)
 .fillColor("black")
 .text("Find my face at" + JSON.stringify(results.data.avatar_url),{
     align: "center"
@@ -74,20 +73,37 @@ doc.font("Times-Roman")
 doc.font("Times-Roman")
 .moveDown(3)
 .fontSize(18)
-.text("Location" + JSON.stringify(results.data.location),{
+ .text("Location" + JSON.stringify(results.data.location),{
     align: "left",
     continued:true
-})
+        }
 .text("GitHub:" + JSON.stringify(results.data.data.html_url),{
     align: "right",
 
-)};
+ },
+
+
+
+ print.end()
+ 
+ ,stream.on("finish",function(){
+
+
+const blob = stream.toBlob("application/pdf");
+
+ })
+      ));                
+      } });
+    })});
+    
 
 
 
 
-     
 
-print.end();                
-}                                                 
-,},)});
+
+
+
+
+                                              
+
